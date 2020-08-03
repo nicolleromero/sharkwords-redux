@@ -1,0 +1,100 @@
+body {
+	font-family: sans-serif;
+}
+
+#root {
+	font-family: monospace;
+	font-size: 52px;
+}
+
+section {
+	display: flex;
+	justify-content: center;
+}
+
+#letter-buttons, .letter-buttons {
+	width: 40%;
+	margin: 12px auto;
+	text-align: center;
+	flex-wrap: wrap;
+}
+
+#play-again {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	color: red;
+	cursor: pointer;
+	margin: 0.67em 0;
+	padding-bottom: 15px;
+}
+
+#you-won {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	color: green;
+	cursor: pointer;
+	margin: 0.67em 0;
+	padding-bottom: 15px;
+}
+
+#play-again:hover {
+	text-decoration: none;
+}
+
+#letter-box, .letter-box {
+	width: 1.5em;
+	height: 2em;
+	margin: 5px;
+	border-bottom: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+button {
+	width: 1.5em;
+	height: 1.5em;
+	font-size: 0.6em;
+	background: white;
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+button[disabled="true"] {
+	cursor: default;
+}
+
+nav {
+	font-size: 10px;
+	position: absolute;
+	bottom: 0;
+	padding-top: 2em;
+}
+
+nav a {
+	display: inline-block;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
+#info {
+	font-family: sans-serif;
+	padding: 0.5em;
+	border: 1px solid #aaa;
+	text-align: center;
+}
+
+cite {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.text {
+	font-size: 16px;
+	line-height: 1.5em;
+	max-width: 600px;
+}

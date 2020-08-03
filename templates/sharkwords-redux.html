@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/styles.css">
+
+<script src="/static/lib/babel-standalone.js"></script>
+<script src="/static/lib/react.development.js"></script>
+<script src="/static/lib/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.1/react-redux.js"></script>
+
+
+
+{% endblock head %}
+
+{% block body %}
+<p id="info">
+  Redux Demo with Sharkwords
+</p>
+
+<div id="root"></div>
+
+<script src="/static/js/sharkwords-redux.jsx" type="text/jsx"></script>
+{% endblock %}
