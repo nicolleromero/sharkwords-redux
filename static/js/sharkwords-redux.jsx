@@ -1,8 +1,5 @@
 const { Provider, useSelector, useDispatch } = ReactRedux;
 
-
-// All components in the tree (below <App /> can access the store)
-//
 const initialState = {
   numWrong: 0,
   guessedLetters: [],
@@ -11,29 +8,32 @@ const initialState = {
 
 const GUESS_LETTER = 'GUESS_LETTER';
 const RESET = 'RESET';
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 
 function reducer(state = initialState, action) {
-  // Check to see if the reducer cares about this action
-  if (action.type === GUESS_LETTER) {
-    const letter = action.payload;
-    const correct = state.word.includes(letter);
+  // Check to see if the reducer cares about this action.
 
-    return {
-      ...state,
-      guessedLetters: [...state.guessedLetters, letter],
-      numWrong: state.numWrong + (correct ? 0 : 1),
-    };
-  } else if (action.type === RESET) {
-    return initialState;
+  switch (action.type) {
+    case GUESS_LETTER: {
+      const letter = action.payload;
+      const correct = state.word.includes(letter);
+
+      return {
+        ...state,
+        guessedLetters: [...state.guessedLetters, letter],
+        numWrong: state.numWrong + (correct ? 0 : 1),
+      };
+    }
+
+    case RESET: {
+      return initialState;
+    }
+
+    // Otherwise, return the existing state unchanged.
+    default:
+      return state;
   }
-
-  // otherwise return the existing state unchanged
-  return state;
 }
-
-// ___________________________________________________________________
-
-const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 
 const Word = () => {
   const guessedLetters = useSelector(state => state.guessedLetters);
@@ -126,17 +126,6 @@ const Letters = () => {
 
 
 const Sharkwords = (props) => {
-  // const [guessedLetters, setGuessedLetters] = React.useState([]);
-  // const [numWrong, setNumWrong] = React.useState(0);
-
-  // const guessLetter = (letter) => {
-  //   if (!props.word.includes(letter)) {
-  //     setNumWrong(numWrong + 1);
-  //   }
-
-  //   setGuessedLetters((prevLetters) => prevLetters.concat([letter]));
-  // };
-
 
   // Use useSelector (hook) to access the part of the state you're interested in
   const numWrong = useSelector(state => state.numWrong);
@@ -155,7 +144,6 @@ const Sharkwords = (props) => {
 }
 
 // Create a Redux store holding the state of your app.
-// Its API is { subscribe, dispatch, getState }.
 const store = Redux.createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
